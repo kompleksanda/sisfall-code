@@ -1,0 +1,91 @@
+from django import forms
+
+
+CODE_CHOICES = [
+    ('D01', 'Walking slowly'),
+    ('D02', 'Walking quickly'),
+    ('D03', 'Jogging slowly'),
+    ('D04', 'Jogging quickly'),
+    ('D05', 'Walking upstairs and downstairs slowly'),
+    ('D06', 'Walking upstairs and downstairs quickly'),
+    ('D07', 'Slowly sit in a half height chair, wait a moment and up slowly'),
+    ('D08', 'Quickly sit in a half height chair, wait a moment and up quickly'),
+    ('D09', 'Slowly sit in a low height chair, wait a moment, and up slowly'),
+    ('D10', 'Quickly sit in a low height chair, wait a moment, and up quickly'),
+    ('D11', 'Sitting a moment, trying to get up, and collapse into a chair'),
+    ('D12', 'Sitting a moment, lying slowly, wait a moment, and sit again'),
+    ('D13', 'Sitting a moment, lying quickly, wait a moment, and sit again'),
+    ('D14', 'Being on one’s back change to lateral position, wait a moment, and change to one’s back'),
+    ('D15', 'Standing, slowly bending at knees, and getting up'),
+    ('D16', 'Standing, slowly bending without bending knees, and getting up'),
+    ('D17', 'Standing, get into a car, remain seated and get out of the car'),
+    ('D18', 'Stumble while walking'),
+    ('D19', 'Gently jump without falling (trying to reach a high object)'),
+    ('F01', 'Fall forward while walking caused by a slip'),
+    ('F02', 'Fall backward while walking caused by a slip'),   
+    ('F03', 'Lateral fall while walking caused by a slip'),
+    ('F04', 'Fall forward while walking caused by a trip'),
+    ('F05', 'Fall forward while jogging caused by a trip'),
+    ('F06', 'Vertical fall while walking caused by fainting'),
+    ('F07', 'Fall while walking, with use of hands in a table to dampen fall, caused by fainting'),
+    ('F08', 'Fall forward when trying to get up'),
+    ('F09', 'Lateral fall when trying to get up'),
+    ('F10', 'Fall forward when trying to sit down'),
+    ('F11', 'Fall backward when trying to sit down'),
+    ('F12', 'Lateral fall when trying to sit down'),
+    ('F13', 'Fall forward while sitting, caused by fainting or falling asleep'),
+    ('F14', 'Fall backward while sitting, caused by fainting or falling asleep'),
+    ('F15', 'Lateral fall while sitting, caused by fainting or falling asleep'),
+]
+
+SUBJECT_CODE_CHOICES = [
+    ('SA01', 'Age=26 Height=165 Weight=53 Gender=F'),
+    ('SA02', 'Age=23 Height=176 Weight=58.5 Gender=M'),
+    ('SA03', 'Age=19 Height=156 Weight=48 Gender=F'),
+    ('SA04', 'Age=23 Height=170 Weight=72 Gender=M'),
+    ('SA05', 'Age=22 Height=172 Weight=69.5 Gender=M'),
+    ('SA06', 'Age=21 Height=169 Weight=58 Gender=M'),
+    ('SA07', 'Age=21 Height=156 Weight=63 Gender=F'),
+    ('SA08', 'Age=21 Height=149 Weight=41.8 Gender=F'),
+    ('SA09', 'Age=24 Height=165 Weight=64 Gender=M'),
+    ('SA10', 'Age=21 Height=177 Weight=67 Gender=M'),
+    ('SA11', 'Age=19 Height=170 Weight=80.5 Gender=M'),
+    ('SA12', 'Age=25 Height=153 Weight=47 Gender=F'),
+    ('SA13', 'Age=22 Height=157 Weight=55 Gender=F'),
+    ('SA14', 'Age=27 Height=160 Weight=46 Gender=F'),
+    ('SA15', 'Age=25 Height=160 Weight=52 Gender=F'),
+    ('SA16', 'Age=20 Height=169 Weight=61 Gender=F'),
+    ('SA17', 'Age=23 Height=182 Weight=75 Gender=M'),
+    ('SA18', 'Age=23 Height=181 Weight=73 Gender=M'),
+    ('SA19', 'Age=30 Height=170 Weight=76 Gender=M'),
+    ('SA20', 'Age=30 Height=150 Weight=42 Gender=F'),
+    ('SA21', 'Age=30 Height=183 Weight=68 Gender=M'),
+    ('SA22', 'Age=19 Height=158 Weight=50.5 Gender=F'),
+    ('SA23', 'Age=24 Height=156 Weight=48 Gender=F'),
+    ('SE01', 'Age=71 Height=171 Weight=102 Gender=M'),
+    ('SE02', 'Age=75 Height=150 Weight=57 Gender=F'),
+    ('SE03', 'Age=62 Height=150 Weight=51 Gender=F'),
+    ('SE04', 'Age=63 Height=160 Weight=59 Gender=F'),
+    ('SE05', 'Age=63 Height=165 Weight=72 Gender=M'),
+    ('SE06', 'Age=60 Height=163 Weight=79 Gender=M'),
+    ('SE07', 'Age=65 Height=168 Weight=76 Gender=M'),
+    ('SE08', 'Age=68 Height=163 Weight=72 Gender=F'),
+    ('SE09', 'Age=66 Height=167 Weight=65 Gender=M'),
+    ('SE10', 'Age=64 Height=156 Weight=66 Gender=F'),
+    ('SE11', 'Age=66 Height=169 Weight=63 Gender=F'),
+    ('SE12', 'Age=69 Height=164 Weight=56.5 Gender=M'),
+    ('SE13', 'Age=65 Height=171 Weight=72.5 Gender=M'),
+    ('SE14', 'Age=67 Height=163 Weight=58 Gender=M'),
+    ('SE15', 'Age=64 Height=150 Weight=50 Gender=F'),
+]
+
+class UserForm(forms.Form):
+    code = forms.CharField(
+        max_length=3,
+        widget=forms.Select(choices=CODE_CHOICES)
+    )
+
+    subject = forms.CharField(
+        max_length=4,
+        widget=forms.Select(choices=SUBJECT_CODE_CHOICES)
+    )
